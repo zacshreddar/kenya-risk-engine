@@ -50,8 +50,18 @@ def get_db():
 
 
 # --- 3. FASTAPI SCHEMAS ---
-# FIXED: Turned off trailing slash enforcement to prevent cloud server method-dropping 405 loops
-app = FastAPI(title="Kenya Risk Engine API", version="1.5.0", redirect_slashes=False)
+app = FastAPI(title="Kenya Risk Engine API", version="1.5.0")
+
+# --- NEW: ENTERPRISE CORS CONFIGURATION POLICY ---
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Safely permits any browser frontend environment to send scoring data
+    allow_credentials=True,
+    allow_methods=["*"],  # Explicitly forces approval for POST, GET, and HEAD network calls
+    allow_headers=["*"],
+)
 
 
 class ApplicantProfile(BaseModel):
