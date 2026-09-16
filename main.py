@@ -50,8 +50,8 @@ def get_db():
 
 
 # --- 3. FASTAPI SCHEMAS ---
-# FIXED: Replaced invalid 'st_title' parameter with the correct 'title' parameter
-app = FastAPI(title="Kenya Risk Engine API", version="1.5.0")
+# FIXED: Turned off trailing slash enforcement to prevent cloud server method-dropping 405 loops
+app = FastAPI(title="Kenya Risk Engine API", version="1.5.0", redirect_slashes=False)
 
 
 class ApplicantProfile(BaseModel):
