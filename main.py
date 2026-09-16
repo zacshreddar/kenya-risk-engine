@@ -50,7 +50,7 @@ def get_db():
 
 
 # --- 3. FASTAPI SCHEMAS ---
-app = FastAPI(title="Kenya Risk Engine API", version="1.5.0")
+app = FastAPI(title="Kenya Risk Engine API (Enterprise Active)", version="1.4.0")
 
 
 class ApplicantProfile(BaseModel):
