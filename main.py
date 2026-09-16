@@ -238,6 +238,7 @@ def get_all_logs(limit: int = 10, db: Session = Depends(get_db)):
     return {"total_retrieved": len(logs), "audit_trail": logs}
 
 
-@app.get("/")
-def read_root():
+@app.route("/", methods=["GET", "HEAD"])
+def read_root(request=None):  # Accepting request variable parameter handles the route method wrapper smoothly
     return {"message": "Welcome to Kenya Risk Engine API - Production Cloud Live"}
+
