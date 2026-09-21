@@ -67,7 +67,7 @@ class ApplicantProfile(BaseModel):
     national_id: str = Field(..., description="Kenyan National ID", examples=["32145678"])
     phone_number: str = Field(..., description="Format: +254...", examples=["+254712345678"])
     requested_amount: float = Field(..., description="Loan size requested in KES", examples=[7500.00])
-    base_credit_score: int = Field(default=600, description="Starting score value out of 900", examples=[600])
+    base_credit_score: int = Field(default=600, description="Starting score value out of 900", examples=600)
     is_crb_listed: bool = Field(default=False, description="True if applicant has active CRB listings", examples=[False])
 
 
@@ -248,3 +248,4 @@ def get_all_logs(limit: int = 10, db: Session = Depends(get_db)):
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Kenya Risk Engine API - Production Cloud Live"}
+
